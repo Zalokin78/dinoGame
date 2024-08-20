@@ -1,27 +1,21 @@
 import Phaser from "phaser";
+import PreloadScene from "./scenes/PreloadScene";
+import PlayScene from "./scenes/PlayScene";
 
 const config: Phaser.Types.Core.GameConfig = {
   type: Phaser.AUTO,
-  width: 800,
-  height: 600,
+  width: 1000,
+  height: 340,
+  pixelArt: true,
+  transparent: true,
   physics: {
     default: "arcade",
   },
-  scene: {
-    preload: preload,
-    create: create,
-  },
+  scene: [PreloadScene, PlayScene],
 };
 
 new Phaser.Game(config);
 
-function preload() {
-  this.load.image("sky", "assets/sky.png");
-}
-
-function create() {
-  this.add.image(400, 300, "sky");
-}
 //   console.log("test");
 
 //   class A {
@@ -73,7 +67,7 @@ class Animal {
   habitat: string;
   constructor(typeOfAnimal: string, habitat: string) {
     this.typeOfAnimal = typeOfAnimal;
-    this.habitat = this.habitat;
+    this.habitat = habitat;
   }
   animalType() {
     console.log("Type of animal is: " + this.typeOfAnimal);
