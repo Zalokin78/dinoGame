@@ -30,7 +30,8 @@ class PlayScene extends Phaser.Scene {
   playerz: Phaser.Types.Physics.Arcade.SpriteWithDynamicBody;
   /* whatever: Whatever;
   person: Person; */
-  player: Player;
+  //player: Player;
+  player: SpriteWithDynamicBody;
   startTrigger: SpriteWithDynamicBody;
 
   get gameHeight() {
@@ -58,6 +59,7 @@ class PlayScene extends Phaser.Scene {
         return "HELLO";
       },
     }; */
+    this.registerPlayerControl();
     this.createEnvironment();
     this.createPlayer();
 
@@ -76,14 +78,12 @@ class PlayScene extends Phaser.Scene {
   createPlayer() {
     this.player = this.physics.add
       .sprite(0, this.gameHeight, "dino-idle")
-      .setOrigin(0, 1);
-
-    this.player = new Player(this, 0, this.gameHeight);
-
-    // this.player.setGravityY(5000);
-
-    // this.player.setCollideWorldBounds(true);
+      .setOrigin(0, 1)
+      .setGravityY(5000)
+      .setCollideWorldBounds(true);
   }
+
+  //this.player = new Player(this, 0, this.gameHeight);
 
   createEnvironment() {
     this.add
@@ -92,14 +92,14 @@ class PlayScene extends Phaser.Scene {
     //debugger;
   }
 
-  /* registerPlayerControl() {
+  registerPlayerControl() {
     const spaceBar = this.input.keyboard.addKey(
       Phaser.Input.Keyboard.KeyCodes.SPACE
     );
     spaceBar.on("down", () => {
       this.player.setVelocityY(-1600);
     });
-  } */
+  }
 }
 
 export default PlayScene;
