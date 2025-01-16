@@ -31,7 +31,7 @@ class PlayScene extends Phaser.Scene {
   /* whatever: Whatever;
   person: Person; */
   //player: Player;
-  player: SpriteWithDynamicBody;
+  player: Player;
   startTrigger: SpriteWithDynamicBody;
 
   get gameHeight() {
@@ -76,11 +76,14 @@ class PlayScene extends Phaser.Scene {
   }
 
   createPlayer() {
-    this.player = this.physics.add
+    /* this.player = this.physics.add
       .sprite(0, this.gameHeight, "dino-idle")
       .setOrigin(0, 1)
       .setGravityY(5000)
-      .setCollideWorldBounds(true);
+      .setCollideWorldBounds(true)
+      .setBodySize(44, 92); */
+
+    this.player = new Player(this, 0, this.gameHeight);
   }
 
   //this.player = new Player(this, 0, this.gameHeight);

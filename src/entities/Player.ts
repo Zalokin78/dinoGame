@@ -24,10 +24,10 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
     //this.registerPlayerControl();
   }
 
-  update(...args: any[]): void {
+  /* update(...args: any[]): void {
     const { space } = this.cursors;
     console.log(space);
-  }
+  } */
   /* registerPlayerControl() {
     const spaceBar = this.scene.input.keyboard.addKey(
       Phaser.Input.Keyboard.KeyCodes.SPACE
