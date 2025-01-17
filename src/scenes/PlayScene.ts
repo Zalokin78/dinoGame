@@ -59,7 +59,7 @@ class PlayScene extends Phaser.Scene {
         return "HELLO";
       },
     }; */
-    this.registerPlayerControl();
+    //this.registerPlayerControl();
     this.createEnvironment();
     this.createPlayer();
 
@@ -93,15 +93,6 @@ class PlayScene extends Phaser.Scene {
       .tileSprite(0, this.gameHeight as number, 88, 26, "ground")
       .setOrigin(0, 1);
     //debugger;
-  }
-
-  registerPlayerControl() {
-    const spaceBar = this.input.keyboard.addKey(
-      Phaser.Input.Keyboard.KeyCodes.SPACE
-    );
-    spaceBar.on("down", () => {
-      this.player.setVelocityY(-1600);
-    });
   }
 }
 
