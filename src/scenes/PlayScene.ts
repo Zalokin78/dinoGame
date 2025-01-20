@@ -94,6 +94,7 @@ class PlayScene extends Phaser.Scene {
       .setOrigin(0, 1);
     //debugger;
   }
+  update() {}
 }
 
 export default PlayScene;

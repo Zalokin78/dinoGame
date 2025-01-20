@@ -1,5 +1,24 @@
+/* declare namespace Controls {
+  type Keys = {
+    cursors: Arrows.Button;
+  };
+}
+
+declare namespace Arrows {
+  type Button = {
+    up: string
+  }
+} */
+
+//type TouchControls = Controls.Keys;
+
+/* type TouchControls = {
+  up:string
+} */
+
 export class Player extends Phaser.Physics.Arcade.Sprite {
   cursors: Phaser.Types.Input.Keyboard.CursorKeys;
+  //controls: TouchControls;
 
   constructor(scene: Phaser.Scene, x: number, y: number) {
     super(scene, x, y, "dino-idle");
@@ -8,6 +27,7 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
     scene.physics.add.existing(this);
 
     this.init();
+    //this.controls = {up:};
 
     this.scene.events.on(Phaser.Scenes.Events.UPDATE, this.update, this);
   }
@@ -27,6 +47,12 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
   update() {
     const { space } = this.cursors;
     console.log(space.isDown);
+
+    //const { up } = "UP";
+
+    if (space.isDown) {
+      this.setVelocity(-1600);
+    }
   }
 
   /* update(...args: any[]): void {
