@@ -12,12 +12,16 @@ declare namespace Arrows {
 
 //type TouchControls = Controls.Keys;
 
+type TestObj = { name: string; age: number };
+
 /* type TouchControls = {
   up:string
 } */
 
 export class Player extends Phaser.Physics.Arcade.Sprite {
   cursors: Phaser.Types.Input.Keyboard.CursorKeys;
+  testObj: TestObj;
+
   //controls: TouchControls;
 
   constructor(scene: Phaser.Scene, x: number, y: number) {
@@ -33,6 +37,7 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
   }
   init() {
     this.cursors = this.scene.input.keyboard.createCursorKeys();
+    console.log(this.cursors);
     // this.setOrigin();
     // this.setCollideWorldBounds();
 
@@ -45,7 +50,12 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
   }
 
   update() {
+    this.testObj = { name: "Harry", age: 20 };
+    const { name } = this.testObj;
+    console.log(name);
+    debugger;
     const { space } = this.cursors;
+    console.log(space);
     console.log(space.isDown);
 
     //const { up } = "UP";
