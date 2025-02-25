@@ -37,7 +37,7 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
   }
   init() {
     this.cursors = this.scene.input.keyboard.createCursorKeys();
-    console.log(this.cursors);
+    //console.log(this.cursors);
     // this.setOrigin();
     // this.setCollideWorldBounds();
 
@@ -52,20 +52,20 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
   update() {
     this.testObj = { name: "Harry", age: 20 };
     const { name } = this.testObj;
-    console.log(name);
-    debugger;
+    //console.log(name);
+    //debugger;
     const { space } = this.cursors;
 
-    console.log(space);
-    console.log(space.isDown);
+    //console.log(space);
+    //console.log(space.isDown);
 
     const isSpaceJustDown = Phaser.Input.Keyboard.JustDown(space);
 
     const onFloor = (this.body as Phaser.Physics.Arcade.Body).onFloor();
-    console.log(onFloor);
+    //console.log(onFloor);
 
     //console.log(this.cursors);
-    console.log(isSpaceJustDown);
+    //console.log(isSpaceJustDown);
 
     //const { up } = "UP";
 

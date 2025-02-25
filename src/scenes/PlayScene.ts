@@ -5,10 +5,15 @@ import { SpriteWithDynamicBody } from "../types";
 
 class PlayScene extends Phaser.Scene {
   player: Player;
+  ground: Phaser.GameObjects.TileSprite;
   startTrigger: SpriteWithDynamicBody;
 
   get gameHeight() {
     return this.game.config.height as number;
+  }
+
+  get gameWidth() {
+    return this.game.config.width as number;
   }
   constructor() {
     super("PlayScene");
@@ -24,7 +29,25 @@ class PlayScene extends Phaser.Scene {
       .setAlpha(0);
 
     this.physics.add.overlap(this.startTrigger, this.player, () => {
-      console.log("COLLISION!!");
+      if (this.startTrigger.y === 10) {
+        this.startTrigger.body.reset(0, this.gameHeight);
+        // console.log("Triggering upper Trigger!");
+        return;
+      }
+      this.startTrigger.body.reset(9999, 9999);
+
+      const rollOutEvent = this.time.addEvent({
+        delay: 1000 / 60,
+        loop: true,
+        callback: () => {
+          console.log("rolling");
+          this.ground.width += 17 * 2;
+          if (this.ground.width >= this.gameWidth) {
+            rollOutEvent.remove();
+            console.log("stop");
+          }
+        },
+      });
     });
   }
 
@@ -33,10 +56,11 @@ class PlayScene extends Phaser.Scene {
   }
 
   createEnvironment() {
-    this.add
+    this.ground = this.add
       .tileSprite(0, this.gameHeight as number, 88, 26, "ground")
       .setOrigin(0, 1);
   }
+  update(time: number, delta: number): void {}
 }
 
 export default PlayScene;

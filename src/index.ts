@@ -73,7 +73,7 @@ class Animal {
     this.habitat = habitat;
   }
   animalType() {
-    console.log("Type of animal is: " + this.typeOfAnimal);
+    // console.log("Type of animal is: " + this.typeOfAnimal);
   }
 }
 
@@ -87,8 +87,8 @@ class Butterfly extends Animal {
     this.habitatz = habitatz;
   }
   butterFlyColor() {
-    console.log("Color of butterfly is: " + this.color);
-    console.log("Type of habitat is: " + this.habitatz);
+    //console.log("Color of butterfly is: " + this.color);
+    //console.log("Type of habitat is: " + this.habitatz);
   }
 }
 
