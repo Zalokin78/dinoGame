@@ -46,11 +46,13 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
       .setCollideWorldBounds(true)
       .setBodySize(44, 92);
 
+    this.registerAnimations();
+
     //this.registerPlayerControl();
   }
 
   update() {
-    this.testObj = { name: "Harry", age: 20 };
+    //this.testObj = { name: "Harry", age: 20 };
     const { name } = this.testObj;
     //console.log(name);
     //debugger;
@@ -72,6 +74,11 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
     if (isSpaceJustDown && onFloor) {
       this.setVelocityY(-1600);
     }
+  }
+  registerAnimations() {
+    this.anims.create({
+      key: "",
+    });
   }
 
   /* update(...args: any[]): void {
