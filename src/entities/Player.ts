@@ -75,9 +75,17 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
       this.setVelocityY(-1600);
     }
   }
+
+  playRunAnimation() {
+    this.play("dino-run", true);
+  }
+
   registerAnimations() {
     this.anims.create({
-      key: "",
+      key: "dino-run",
+      frames: this.anims.generateFrameNames("dino-run"),
+      frameRate: 10,
+      repeat: -1,
     });
   }
 
