@@ -53,7 +53,7 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
 
   update() {
     //this.testObj = { name: "Harry", age: 20 };
-    const { name } = this.testObj;
+    //const { name } = this.testObj;
     //console.log(name);
     //debugger;
     const { space } = this.cursors;

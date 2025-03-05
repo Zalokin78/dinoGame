@@ -41,6 +41,7 @@ class PlayScene extends Phaser.Scene {
         loop: true,
         callback: () => {
           //console.log("rolling");
+          this.player.playRunAnimation();
           this.player.setVelocityX(80);
           this.ground.width += 17 * 2;
           if (this.ground.width >= this.gameWidth) {
