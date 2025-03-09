@@ -65,7 +65,9 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
 
     const onFloor = (this.body as Phaser.Physics.Arcade.Body).onFloor();
     //console.log(onFloor);
-
+    if (onFloor) {
+      console.log("onFloor!!");
+    }
     //console.log(this.cursors);
     //console.log(isSpaceJustDown);
 
@@ -74,6 +76,8 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
     if (isSpaceJustDown && onFloor) {
       this.setVelocityY(-1600);
     }
+
+    console.log(this.body.deltaAbsY());
   }
 
   playRunAnimation() {
@@ -83,7 +87,7 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
   registerAnimations() {
     this.anims.create({
       key: "dino-run",
-      frames: this.anims.generateFrameNames("dino-run"),
+      frames: this.anims.generateFrameNames("dino-run", { start: 2, end: 3 }),
       frameRate: 10,
       repeat: -1,
     });
