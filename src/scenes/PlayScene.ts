@@ -3,10 +3,15 @@
 import { Player } from "../entities/Player";
 import { SpriteWithDynamicBody } from "../types";
 
+type Person = string;
+
 class PlayScene extends Phaser.Scene {
   player: Player;
   ground: Phaser.GameObjects.TileSprite;
   startTrigger: SpriteWithDynamicBody;
+  //start of typescript testing
+  person: Person;
+  //end of typescript testing
 
   get gameHeight() {
     return this.game.config.height as number;
@@ -20,6 +25,9 @@ class PlayScene extends Phaser.Scene {
   }
 
   create() {
+    //start of typescript testing
+    this.person = "Harry";
+    //end of typescript testing
     this.createEnvironment();
     this.createPlayer();
 
