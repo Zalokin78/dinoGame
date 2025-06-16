@@ -2,6 +2,7 @@
 
 import { Player } from "../entities/Player";
 import { SpriteWithDynamicBody } from "../types";
+declare module DinoGame {}
 
 type Person = string;
 
@@ -11,6 +12,7 @@ class PlayScene extends Phaser.Scene {
   startTrigger: SpriteWithDynamicBody;
   //start of typescript testing
   person: Person;
+  age: number;
   //end of typescript testing
 
   get gameHeight() {
@@ -27,6 +29,7 @@ class PlayScene extends Phaser.Scene {
   create() {
     //start of typescript testing
     this.person = "Harry";
+    this.age = 10;
     //end of typescript testing
     this.createEnvironment();
     this.createPlayer();
