@@ -10,6 +10,7 @@ class PlayScene extends Phaser.Scene {
   player: Player;
   ground: Phaser.GameObjects.TileSprite;
   startTrigger: SpriteWithDynamicBody;
+  triggerState: boolean;
   //start of typescript testing
   person: Person;
   age: number;
@@ -40,6 +41,7 @@ class PlayScene extends Phaser.Scene {
       .setAlpha(0);
 
     this.physics.add.overlap(this.startTrigger, this.player, () => {
+      this.triggerState = true;
       if (this.startTrigger.y === 10) {
         this.startTrigger.body.reset(0, this.gameHeight);
         // console.log("Triggering upper Trigger!");
