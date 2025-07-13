@@ -10,6 +10,8 @@ declare namespace Arrows {
   }
 } */
 
+import { GameScene } from "../scenes/GameScene";
+
 //type TouchControls = Controls.Keys;
 
 type TestObj = { name: string; age: number };
@@ -20,11 +22,12 @@ type TestObj = { name: string; age: number };
 
 export class Player extends Phaser.Physics.Arcade.Sprite {
   cursors: Phaser.Types.Input.Keyboard.CursorKeys;
+  scene: GameScene;
   testObj: TestObj;
 
   //controls: TouchControls;
 
-  constructor(scene: Phaser.Scene, x: number, y: number) {
+  constructor(scene: GameScene, x: number, y: number) {
     super(scene, x, y, "dino-idle");
 
     scene.add.existing(this);
@@ -66,7 +69,7 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
     const onFloor = (this.body as Phaser.Physics.Arcade.Body).onFloor();
     //console.log(onFloor);
     if (onFloor) {
-      console.log("onFloor!!");
+      //console.log("onFloor!!");
     }
     //console.log(this.cursors);
     //console.log(isSpaceJustDown);
@@ -76,7 +79,11 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
     if (isSpaceJustDown && onFloor) {
       this.setVelocityY(-1600);
     }
-    this.scene.update;
+
+    if (!this.scene.isGameRunning) {
+      return;
+    }
+    //this.scene.update;
 
     if (!onFloor) {
       this.anims.stop();
@@ -85,7 +92,7 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
       this.playRunAnimation();
     }
 
-    console.log(this.body.deltaAbsY());
+    //console.log(this.body.deltaAbsY());
   }
 
   playRunAnimation() {
