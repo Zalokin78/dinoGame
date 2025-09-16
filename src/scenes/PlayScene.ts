@@ -10,7 +10,7 @@ type Person = string;
 class PlayScene extends GameScene {
   player: Player;
   ground: Phaser.GameObjects.TileSprite;
-  obstactles: Phaser.Physics.Arcade.Group;
+  obstacles: Phaser.Physics.Arcade.Group;
   startTrigger: SpriteWithDynamicBody;
   // isGameRunning: boolean = false;
   //start of typescript testing
@@ -40,7 +40,7 @@ class PlayScene extends GameScene {
     this.createEnvironment();
     this.createPlayer();
 
-    this.obstactles = this.physics.add.group();
+    this.obstacles = this.physics.add.group();
 
     this.startTrigger = this.physics.add
       .sprite(0, 10, null)
@@ -102,6 +102,10 @@ class PlayScene extends GameScene {
   spawnObstacle() {
     const obstacleNum = Math.floor(Math.random() * 6) + 1;
     const distance = Phaser.Math.Between(600, 900);
+
+    this.obstacles
+      .create(distance, this.gameHeight, `obstacle-${obstacleNum}`)
+      .setOrigin(0, 1);
 
     //this.obstactles.create(distance, this.game);
   }
