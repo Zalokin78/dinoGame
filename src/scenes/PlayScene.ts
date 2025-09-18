@@ -19,7 +19,7 @@ class PlayScene extends GameScene {
   age: number;
   spawnInterval: number = 1500;
   spawnTime: number = 0;
-  obstacleSpeed: number = 5;
+  gameSpeed: number = 5;
 
   //end of typescript testing
 
@@ -89,7 +89,9 @@ class PlayScene extends GameScene {
       this.spawnTime = 0;
     }
 
-    Phaser.Actions.IncX(this.obstacles.getChildren(), -this.obstacleSpeed);
+    Phaser.Actions.IncX(this.obstacles.getChildren(), -this.gameSpeed);
+
+    this.ground.tilePositionX += this.gameSpeed;
 
     this.obstacles.getChildren().forEach((obstacle: SpriteWithDynamicBody) => {
       if (obstacle.getBounds().right < 0) {
@@ -121,7 +123,6 @@ class PlayScene extends GameScene {
       .create(distance, this.gameHeight, `obstacle-${obstacleNum}`)
       .setOrigin(0, 1);
 
-    debugger;
     //this.obstactles.create(distance, this.game);
   }
 }
