@@ -49,6 +49,11 @@ class PlayScene extends GameScene {
       .setOrigin(0, 1)
       .setAlpha(0);
 
+    this.physics.add.collider(this.obstacles, this.player, () => {
+      this.physics.pause();
+      this.isGameRunning = false;
+    });
+
     this.physics.add.overlap(this.startTrigger, this.player, () => {
       if (this.startTrigger.y === 10) {
         this.startTrigger.body.reset(0, this.gameHeight);
@@ -121,7 +126,8 @@ class PlayScene extends GameScene {
 
     this.obstacles
       .create(distance, this.gameHeight, `obstacle-${obstacleNum}`)
-      .setOrigin(0, 1);
+      .setOrigin(0, 1)
+      .setImmovable();
 
     //this.obstactles.create(distance, this.game);
   }
