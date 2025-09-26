@@ -13,6 +13,11 @@ class PlayScene extends GameScene {
   ground: Phaser.GameObjects.TileSprite;
   obstacles: Phaser.Physics.Arcade.Group;
   startTrigger: SpriteWithDynamicBody;
+
+  gameOverContainer: Phaser.GameObjects.Container;
+  gameOverText: Phaser.GameObjects.Image;
+  restartText: Phaser.GameObjects.Image;
+
   // isGameRunning: boolean = false;
   //start of typescript testing
   person: Person;
@@ -42,6 +47,13 @@ class PlayScene extends GameScene {
     this.createEnvironment();
     this.createPlayer();
 
+    this.gameOverText = this.add.image(0, 0, "game-over");
+    this.restartText = this.add.image(0, 80, "restart");
+
+    this.add
+      .container(this.gameWidth / 2, this.gameHeight / 2 - 50)
+      .add([this.gameOverText, this.restartText]);
+
     this.obstacles = this.physics.add.group();
 
     this.startTrigger = this.physics.add
@@ -52,6 +64,11 @@ class PlayScene extends GameScene {
     this.physics.add.collider(this.obstacles, this.player, () => {
       this.physics.pause();
       this.isGameRunning = false;
+
+      this.player.die();
+
+      this.spawnTime = 0;
+      this.gameSpeed = 5;
     });
 
     this.physics.add.overlap(this.startTrigger, this.player, () => {

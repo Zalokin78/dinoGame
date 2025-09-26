@@ -108,6 +108,11 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
     });
   }
 
+  die() {
+    this.anims.pause();
+    this.setTexture("dino-hurt");
+  }
+
   /* update(...args: any[]): void {
     const { space } = this.cursors;
     console.log(space);
