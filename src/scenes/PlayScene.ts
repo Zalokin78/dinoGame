@@ -48,11 +48,12 @@ class PlayScene extends GameScene {
     this.createPlayer();
 
     this.gameOverText = this.add.image(0, 0, "game-over");
-    this.restartText = this.add.image(0, 80, "restart");
+    this.restartText = this.add.image(0, 80, "restart").setInteractive();
 
-    this.add
+    this.gameOverContainer = this.add
       .container(this.gameWidth / 2, this.gameHeight / 2 - 50)
-      .add([this.gameOverText, this.restartText]);
+      .add([this.gameOverText, this.restartText])
+      .setAlpha(0);
 
     this.obstacles = this.physics.add.group();
 
@@ -61,11 +62,16 @@ class PlayScene extends GameScene {
       .setOrigin(0, 1)
       .setAlpha(0);
 
+    this.restartText.on("pointerdown", () => {
+      console.log("clicking restart!");
+    });
+
     this.physics.add.collider(this.obstacles, this.player, () => {
       this.physics.pause();
       this.isGameRunning = false;
 
       this.player.die();
+      this.gameOverContainer.setAlpha(1);
 
       this.spawnTime = 0;
       this.gameSpeed = 5;
